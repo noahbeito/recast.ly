@@ -1,18 +1,23 @@
-var VideoPlayer = ({video}) => { // pass one video selected by handle
+var VideoPlayer = ({ video }) => { // pass one video selected by handle
   //const [curVideo, setCurVideo] = useState(video.id.videoId); //videos[0] only play one video
-  console.log('video: ', video);
-  const link = 'https://www.youtube.com/embed/' + video.id.videoId;
-  return (
-    <div className="video-player">
-      <div className="embed-responsive embed-responsive-16by9">
-        <iframe className="embed-responsive-item" src={link} allowFullScreen></iframe>
+
+  //const link = 'https://www.youtube.com/embed/' + video.id.videoId;
+  return !video ? (
+    <div className="video-player">Please wait...</div>
+  ) :
+    (
+      <div className="video-player">
+        <div className="embed-responsive embed-responsive-16by9">
+          <iframe className="embed-responsive-item"
+            src={`https://www.youtube.com/embed/${video.id.videoId}`}
+            allowFullScreen></iframe>
+        </div>
+        <div className="video-player-details">
+          <h3>{video.snippet.title}</h3>
+          <div>{video.snippet.description}</div>
+        </div>
       </div>
-      <div className="video-player-details">
-        <h3>{video.snippet.title}</h3>
-        <div>{video.snippet.description}</div>
-      </div>
-    </div>
-  );
+    );
 };
 
 // PropTypes tell other developers what `props` a component expects

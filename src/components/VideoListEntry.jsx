@@ -1,14 +1,25 @@
-var VideoListEntry = () => (
-  <div className="video-list-entry media">
-    <div className="media-left media-middle">
-      <img className="media-object" src="https://i.ytimg.com/vi/1w8Z0UOXVaY/default.jpg" alt="" />
+
+
+const { useState } = React;
+var VideoListEntry = ({ video }) => {
+  const [title, setTitle] = useState(video.snippet.title);
+  const [description, setDescription] = useState(video.snippet.description);
+  const [img, setImg] = useState(video.snippet.thumbnails.default.url);
+
+  return (
+    <div className="video-list-entry media">
+      <div className="media-left media-middle">
+        <img className="media-object" src={img} alt="" />
+      </div>
+      <div className="media-body">
+        <div className="video-list-entry-title">{title}</div>
+        <div className="video-list-entry-detail">{description}</div>
+      </div>
     </div>
-    <div className="media-body">
-      <div className="video-list-entry-title">Video Title</div>
-      <div className="video-list-entry-detail">Video Description</div>
-    </div>
-  </div>
-);
+  );
+};
+
+
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated

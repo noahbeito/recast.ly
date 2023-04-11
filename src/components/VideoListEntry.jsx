@@ -1,25 +1,26 @@
 
+var VideoListEntry = ({ video, handleClick }) => {
+  // const handelClick = (event) => {
+  //   console.log(event.target);
+  //   console.log('video: ', video);
 
-const { useState } = React;
-var VideoListEntry = ({ video }) => {
-  const [title, setTitle] = useState(video.snippet.title);
-  const [description, setDescription] = useState(video.snippet.description);
-  const [img, setImg] = useState(video.snippet.thumbnails.default.url);
-
+  //   setCurVideo(video);
+  // };
   return (
     <div className="video-list-entry media">
       <div className="media-left media-middle">
-        <img className="media-object" src={img} alt="" />
+        <img className="media-object" src={video.snippet.thumbnails.default.url} alt="" />
       </div>
       <div className="media-body">
-        <div className="video-list-entry-title">{title}</div>
-        <div className="video-list-entry-detail">{description}</div>
+        <div className="video-list-entry-title" onClick={(event) => {
+          event.preventDefault();
+          handleClick(video);
+        }}>{video.snippet.title}</div>
+        <div className="video-list-entry-detail">{video.snippet.description}</div>
       </div>
     </div>
   );
 };
-
-
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated

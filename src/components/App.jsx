@@ -1,10 +1,24 @@
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './Videoplayer.js';
+
+const { useState } = React;
+
 var App = () => {
   const videos = exampleVideoData;
+  const [curVideo, setCurVideo] = useState(videos[0]); // keep track of the current video in the video list
 
-  //console.log('App: ', videos);
+  const [videoList, setVideoList] = useState(videos);
+
+  var selectVideo = function(videoObj) {
+    setCurVideo(videoObj);
+  };
+
+  // setVideoList([...videoList, { contents: taskString, completed: false }])
+  // const [title, setTitle] = useState(video.snippet.title);
+  // const [description, setDescription] = useState(video.snippet.description);
+  // const [img, setImg] = useState(video.snippet.thumbnails.default.url);
+
   return (
     <div>
       <nav className="navbar">
@@ -14,10 +28,10 @@ var App = () => {
       </nav>
       <div className="row">
         <div className="col-md-7">
-          <div><h5><em><VideoPlayer video={video}/></em> view goes here</h5></div>
+          <div><h5><em><VideoPlayer video={curVideo}/></em> view goes here</h5></div>
         </div>
         <div className="col-md-5">
-          <div><h5><em><VideoList videos={videos}/></em> view goes here</h5></div>
+          <div><h5><em><VideoList videos={videoList} handleClick={selectVideo}/></em> view goes here</h5></div>
         </div>
       </div>
     </div>

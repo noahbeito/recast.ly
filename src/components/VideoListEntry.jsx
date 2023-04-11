@@ -1,11 +1,6 @@
 
 var VideoListEntry = ({ video, handleClick }) => {
-  // const handelClick = (event) => {
-  //   console.log(event.target);
-  //   console.log('video: ', video);
 
-  //   setCurVideo(video);
-  // };
   return (
     <div className="video-list-entry media">
       <div className="media-left media-middle">

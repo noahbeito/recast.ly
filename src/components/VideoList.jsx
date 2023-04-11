@@ -2,7 +2,7 @@ import VideoListEntry from './VideoListEntry.js';
 
 
 var VideoList = ({ videos, handleClick }) => {
-  //console.log('VideoList', videos[0]);
+
   return (
     <div className="video-list">
       {videos.map((video) => <VideoListEntry video={video} key={video.etag} handleClick={handleClick}/>)}

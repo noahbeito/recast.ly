@@ -1,15 +1,15 @@
-const { useState } = React;
 var VideoPlayer = ({video}) => { // pass one video selected by handle
-  const [curVideo, setCurVideo] = useState(video.id.videoId); //videos[0] only play one video
-  const link = 'https://www.youtube.com/embed/' + curVideo;
+  //const [curVideo, setCurVideo] = useState(video.id.videoId); //videos[0] only play one video
+  console.log('video: ', video);
+  const link = 'https://www.youtube.com/embed/' + video.id.videoId;
   return (
     <div className="video-player">
       <div className="embed-responsive embed-responsive-16by9">
         <iframe className="embed-responsive-item" src={link} allowFullScreen></iframe>
       </div>
       <div className="video-player-details">
-        <h3>Video Title</h3>
-        <div>Video Description</div>
+        <h3>{video.snippet.title}</h3>
+        <div>{video.snippet.description}</div>
       </div>
     </div>
   );

@@ -15,16 +15,14 @@ var searchYouTube = (query, callback) => {
     data: {
       key: YOUTUBE_API_KEY,
       q: query,
-      part: 'snippet',
-      maxResults: 5,
-      type: 'video',
     },
     contentType: 'application/json',
+
     success: function(data) {
       data = data.slice(0, 5);
       callback(data);
     },
-    error: function(response) {
+    error: function (response) {
       console.log('Search Failed');
     }
   });
